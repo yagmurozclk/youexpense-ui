@@ -1,5 +1,5 @@
 <template>
-  <div class="login-form col-md-6 col-lg-5 ml-auto d-flex align-items-center mt-4 mt-md-0" style="height: 1000px">
+  <div class="login-form col-md-6 col-lg-5 ml-auto d-flex align-items-center mt-4 mt-md-0" style="height: 100%">
     <div class="">
       <form action="">
         <h2 class="text-center">Sign in</h2>
