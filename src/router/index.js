@@ -5,16 +5,29 @@ import BootstrapVue from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import Home from '../components/Home'
+import App from '../App'
 
 Vue.use(Router)
 Vue.use(BootstrapVue)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
+      name: 'App',
+      component: App
+    },
+    {
+      path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/home',
+      name: 'Home',
+      component: Home
     }
   ]
 })

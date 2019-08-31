@@ -61,7 +61,10 @@ export default {
           email: this.form.email,
           password: this.form.password
         })
-        .then(response => (console.log(response)))
+        .then(response => {
+          console.log(response)
+          this.$router.push({ name: 'Home' })
+        })
         .catch(error => {
           console.log('error : ' + error)
         })
