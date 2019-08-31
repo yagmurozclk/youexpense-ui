@@ -1,17 +1,20 @@
 <template>
-  <div id="app" style="height: 1120px">
-    <header  class="py-4 bg-dark text-white-50">
-      <div class="container text-center">
-        <small>Header</small>
+  <div id="app">
+    <header  class="py-4 text-white-50" style="background-color: #de7824">
+      <div class="container text-left" >
+        <router-link to="/">
+          <img src="@/assets/logo.png" style="width: 55px"/>
+        </router-link>
+        <small style="font-size: 35px;">YouExpense</small>
       </div>
     </header>
-<!--    <img src="./assets/logo.png">-->
     <router-view/>
-    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-      <div class="container text-center">
-        <small>Copyright &copy; Your Website</small>
+    <footer id="sticky-footer" class="footer" >
+      <div class="align-self-center" style="height: 100%;display: flex;justify-content: center;align-items: center;">
+        <small>Copyright &copy; YouExpense</small>
       </div>
     </footer>
+
   </div>
 </template>
 
@@ -34,5 +37,16 @@ export default {
   color: #2c3e50;
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #de7824;
+  color:#fff;
+  height: 70px;
+  vertical-align: center;
+  text-align: center;
 }
 </style>

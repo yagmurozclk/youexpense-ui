@@ -7,9 +7,11 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Home from '../components/Home'
 import App from '../App'
+import Vuelidate from 'vuelidate'
 
 Vue.use(Router)
 Vue.use(BootstrapVue)
+Vue.use(Vuelidate)
 
 export default new Router({
   mode: 'history',

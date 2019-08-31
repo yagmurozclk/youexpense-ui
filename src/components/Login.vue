@@ -1,45 +1,46 @@
 <template>
-  <div class="login-form col-md-6 col-lg-5 ml-auto d-flex align-items-center mt-4 mt-md-0" style="height: 100%">
-    <div class="">
-      <form action="">
-        <h2 class="text-center">Sign in</h2>
-        <!--      <div class="text-center social-btn">-->
-        <!--        <a href="#" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>-->
-        <!--        <a href="#" class="btn btn-info btn-block"><i class="fa fa-twitter"></i> Sign in with <b>Twitter</b></a>-->
-        <!--        <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>-->
-        <!--      </div>-->
-        <!--      <div class="or-seperator"><i>or</i></div>-->
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <input type="text" class="form-control" name="username" placeholder="Username" required="required"
-                   v-model="form.email">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required"
-                   v-model="form.password">
-          </div>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-success btn-block" @click="onSubmit">Sign in</button>
-        </div>
-        <div class="clearfix">
-          <label class="pull-left checkbox-inline"><input type="checkbox" v-model="form.remember"> Remember me</label>
-          <a href="#" class="pull-right text-success">Forgot Password?</a>
-        </div>
+  <div class="login-form align-items-center align-self-center d-flex" style="height: 800px">
 
-      </form>
-      <div class="hint-text small">Don't have an account? <a href="#" class="text-success">Register Now!</a></div>
-    </div>
+    <form action="">
+      <h2 class="text-center">Sign in</h2>
+      <!--      <div class="text-center social-btn">-->
+      <!--        <a href="#" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>-->
+      <!--        <a href="#" class="btn btn-info btn-block"><i class="fa fa-twitter"></i> Sign in with <b>Twitter</b></a>-->
+      <!--        <a href="#" class="btn btn-danger btn-block"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>-->
+      <!--      </div>-->
+      <!--      <div class="or-seperator"><i>or</i></div>-->
+      <div class="form-group" :class="{ 'hasError': this.$v.form.email.$error }">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-user"></i></span>
+          <input type="text" class="form-control" name="username" placeholder="Username" required="required"
+                 v-model="form.email">
+        </div>
+      </div>
+      <div class="form-group" :class="{ 'hasError': this.$v.form.password.$error }">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+          <input type="password" class="form-control"  name="password" placeholder="Password" required="required"
+                 v-model="form.password">
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success btn-block" @click="onSubmit">Sign in</button>
+      </div>
+      <div class="clearfix">
+        <label class="pull-left checkbox-inline"><input type="checkbox" v-model="form.remember"> Remember me</label>
+        <a href="#" class="pull-right text-success">Forgot Password?</a>
+      </div>
+      <div class="hint-text small d-flex">Don't have an account? &nbsp; <a href="#" class="text-success">Register
+        Now!</a></div>
+    </form>
+
   </div>
 
 </template>
 
 <script>
 import axios from 'axios'
+import {required, email, minLength} from 'vuelidate/lib/validators'
 
 export default {
   data () {
@@ -52,9 +53,19 @@ export default {
       }
     }
   },
+  validations: {
+    form: {
+      email: {required, email},
+      password: {required, min: minLength(10)}
+    }
+  },
   methods: {
     onSubmit (evt) {
       evt.preventDefault()
+
+      this.$v.form.$touch()
+      console.log('log : ' + this.$v.form.$error)
+      if (this.$v.form.$error) return
 
       axios
         .post('http://www.mocky.io/v2/5d6aae773100006400d20744', {
@@ -63,7 +74,7 @@ export default {
         })
         .then(response => {
           console.log(response)
-          this.$router.push({ name: 'Home' })
+          this.$router.push({name: 'Home'})
         })
         .catch(error => {
           console.log('error : ' + error)
@@ -138,5 +149,10 @@ export default {
 
   .input-group-addon .fa {
     font-size: 18px;
+  }
+
+  .hasError{
+    color: red;
+    border: 1px solid;
   }
 </style>
