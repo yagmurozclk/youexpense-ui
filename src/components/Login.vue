@@ -19,7 +19,7 @@
       <div class="form-group" :class="{ 'hasError': this.$v.form.password.$error }">
         <div class="input-group">
           <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-          <input type="password" class="form-control"  name="password" placeholder="Password" required="required"
+          <input type="password" class="form-control" name="password" placeholder="Password" required="required"
                  v-model="form.password">
         </div>
       </div>
@@ -56,7 +56,7 @@ export default {
   validations: {
     form: {
       email: {required, email},
-      password: {required, min: minLength(10)}
+      password: {required, min: minLength(6)}
     }
   },
   methods: {
@@ -151,8 +151,9 @@ export default {
     font-size: 18px;
   }
 
-  .hasError{
+  .hasError {
     color: red;
     border: 1px solid;
   }
+
 </style>
