@@ -1,6 +1,6 @@
 <template>
-  <div class="login-form align-items-center align-self-center d-flex" style="height: 800px">
-
+  <div class="container">
+    <div class="login-form align-items-center align-self-center d-flex" style="height: 800px">
     <form action="">
       <h2 class="text-center">Sign in</h2>
       <!--      <div class="text-center social-btn">-->
@@ -33,7 +33,7 @@
       <div class="hint-text small d-flex">Don't have an account? &nbsp; <a href="#" class="text-success">Register
         Now!</a></div>
     </form>
-
+    </div>
   </div>
 
 </template>
@@ -63,9 +63,9 @@ export default {
     onSubmit (evt) {
       evt.preventDefault()
 
-      this.$v.form.$touch()
-      console.log('log : ' + this.$v.form.$error)
-      if (this.$v.form.$error) return
+      // this.$v.form.$touch()
+      // console.log('log : ' + this.$v.form.$error)
+      // if (this.$v.form.$error) return
 
       axios
         .post('http://www.mocky.io/v2/5d6aae773100006400d20744', {

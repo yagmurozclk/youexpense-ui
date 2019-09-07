@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <header  class="py-4 text-white-50" style="background-color: #de7824">
+    <header class="py-4 text-white-50" style="background-color: #de7824">
       <div class="container text-left" >
         <router-link to="/">
-          <img src="@/assets/logo.png" style="width: 55px"/>
+          <img src="@/assets/logo.png" style="width: 30px"/>
         </router-link>
-        <small style="font-size: 35px;">YouExpense</small>
+        <small style="font-size: 20px;">YouExpense</small>
       </div>
     </header>
     <router-view/>
-    <footer id="sticky-footer" class="footer" >
+    <footer id="sticky-footer">
       <div class="align-self-center" style="height: 100%;display: flex;justify-content: center;align-items: center;">
         <small>Copyright &copy; YouExpense</small>
       </div>
@@ -45,7 +45,7 @@ footer {
   width: 100%;
   background-color: #de7824;
   color:#fff;
-  height: 70px;
+  height: 30px;
   vertical-align: center;
   text-align: center;
 }

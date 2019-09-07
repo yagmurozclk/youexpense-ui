@@ -5,7 +5,7 @@ import BootstrapVue from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import Home from '../components/Home'
+import Home from '../components/home/Home'
 import App from '../App'
 import Vuelidate from 'vuelidate'
 
